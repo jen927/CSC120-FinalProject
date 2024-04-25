@@ -50,7 +50,10 @@ public class GameCompiler {
                     "You chose not to go on this journey. You are a failure and your family disowned you.. You forever regretted not going beyond these walls...");
             stillPlaying = false;
         } else if (userResponse.equals("YES")) {
-            System.out.println("Let you life changing journey begin...");
+            System.out.println("What is your name warrior?");
+            userResponse = userInput.nextLine().toUpperCase();
+            MainCharacter player = new MainCharacter(userResponse);
+            System.out.println("Let you life changing journey begin " + player.getName() + "...");
         }
         // game loop
         while (stillPlaying) {

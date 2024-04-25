@@ -1,4 +1,16 @@
 Name: Dull Sword
-Description: blah blah
+Description: Cheapest magical weapon on the market.. Good for beginners, however, very lackluster in terms of magical output...
+Attack: TBD
 Level: 0
+-
+Name: Angelic Dancing Sword
+Description: Those who wield this weapon are said to be stepping on stage. They move in tune to the rhythm of battle. If you listen close enough, you might hear it...
+Attack: TBD
+Level: 1
+-
+Name: TBD
+Description: blah blah
+Attack: TBD
+Level: 2
+-
 

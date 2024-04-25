@@ -1,14 +1,13 @@
 public class Person {
 
     String name; //make private or public
-    String desc;
+    //String desc;
     int powerLevel;
 
-    Person(String name, String desc, int powerLevel){
+    Person(String name, int powerLevel){
         this.name = name;
-        this.desc = desc;
         this.powerLevel = powerLevel;
     }
-    
+
 
 }
