@@ -1,11 +1,18 @@
 Area: Golden Luck
 Description: The heart of magic. Only the most powerful families live here. The city is booming with magic everywhere, it is a dream wonderland! That is, if you are gifted.. For the ungifted, there is only ridicule and inaccessibility… North of you lies a path to outside the city...
 LevelRequired: 0
+Weapon: Dull Sword
+Enemies: N/A=N/A 
 -
 Area: Flowery Field
-Description: blah blah
+Description: Just outside the gates of city lies an open field filled with flowers dancing in the wind.. As you continue down the path, it leads you 
 LevelRequired: 0
+Weapon: Angelic Dancing Sword
+Enemies:Wizard Bandit,Wizard Bandit,Wizard Bandit=1,1,1
 -
 Area: Weeping Mountains
 Description: blah blah
 LevelRequired: 1
+Weapon: TBD=TBD
+Enemies: WizardBandit, 
+

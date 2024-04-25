@@ -1,39 +1,24 @@
 import java.util.ArrayList;
 
-public class MainCharacter extends Person{
+public class MainCharacter extends Character{
     
     int newPowerLevel;
     Weapon weapon;
     ArrayList<Weapon> weaponsCollection;
-    ArrayList<Enemies> enemiesDefeated;
+    ArrayList<Character> enemiesDefeated;
 
     //main constructor
-    public MainCharacter(String name, int powerLevel){
-        super(name, powerLevel); // a person who has...
-        this.weaponsCollection = new ArrayList<Weapon>();
-        this.enemiesDefeated = new ArrayList<Enemies>();
-    }
-
-    //overload constructor
     public MainCharacter(String name){
-        super(name, 0); 
+        super(name, 0); // player who has...
         this.weaponsCollection = new ArrayList<Weapon>();
-        this.enemiesDefeated = new ArrayList<Enemies>();
-    }
-
-    //gets name of player
-    public String getName(){
-        return name;
+        this.enemiesDefeated = new ArrayList<Character>();
     }
 
     // Updates the power level of user/player
-    public void setPowerLevel(int newPowerLevel){
+    public void updatePowerLevel(int newPowerLevel){
         powerLevel = newPowerLevel;
     }
-    //Gets current power level of user
-    public int getPowerLevel(){
-        return powerLevel;
-    }
+
     //Gets the current number of weapons in collection
     public int getWeaponNum(){
         return weaponsCollection.size();

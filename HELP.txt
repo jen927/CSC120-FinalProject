@@ -1,0 +1,10 @@
+Available Commands:
+    NORTH
+    SOUTH
+    WEST
+    EAST
+    PICK UP
+    DROP
+    ATTACK
+    LOOK 
+If 

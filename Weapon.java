@@ -1,4 +1,4 @@
-public class Weapon {
+public class Weapon { //WORK IN PROGRESS
 
     String name;
     int powerLevel;
