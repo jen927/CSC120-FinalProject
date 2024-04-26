@@ -34,6 +34,14 @@ public class MainCharacter extends Character{
         System.out.println("You have lost " + weapon + "from your Collection...");
     }
 
-    // 
+    //List weapon inventory
+    public void listWeapons(){
+        for(Weapon weapon : weaponsCollection){
+            String name = weapon.getName();
+            //String description = weapon.getDesc();
+            System.out.println(name);
+            //System.out.println("\n" + description);
+        }
+    } 
 
 }

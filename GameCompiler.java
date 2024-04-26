@@ -58,10 +58,10 @@ public class GameCompiler {
         // game loop
         while (stillPlaying) {
             // Starting Location
-            Area currentArea = new Area("Golden Luck", 0);
+            Area currentArea = new Area("Golden Luck", 0, 1);
 
             // Reads area0 info
-            currentArea.getDesc();
+            currentArea.getLocation(); //call getlocation method
 
             //Lets user decide action.
             userResponse = userInput.nextLine().toUpperCase();
@@ -73,14 +73,14 @@ public class GameCompiler {
                 }
                 else{
                     System.out.println("Invalid choice...\n");
-                    currentArea.getDesc();
+                    currentArea.getLocation();
                     userResponse = userInput.nextLine().toUpperCase();
                 }
             }
             //new area unlocked!!
-            currentArea = new Area("Flowery Field", 3);
+            currentArea = new Area("Flowery Field", 3, 3);
             
-            currentArea.getDesc();
+            currentArea.getLocation();
 
             stillPlaying = false; //placeholder for end of game/loop...
             

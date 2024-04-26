@@ -1,18 +1,43 @@
 Area: Golden Luck
-Description: The heart of magic. Only the most powerful families live here. The city is booming with magic everywhere, it is a dream wonderland! That is, if you are gifted.. For the ungifted, there is only ridicule and inaccessibility… North of you lies a path to outside the city...
 LevelRequired: 0
-Weapon: Dull Sword
+Location0
+Description: The heart of magic. Only the most powerful families live here. The city is booming with magic everywhere, it is a dream wonderland! That is, if you are gifted.. For the ungifted, there is only ridicule and inaccessibility… North of you lies a path to outside the city...
+North: true=Flowery Field-Location0
+South: false=Only a wall as tall as the clouds meets your eye...
+East: false=Only a wall as tall as the clouds meets your eye...
+West: false=Only a wall as tall as the clouds meets your eye...
+Weapon: N/A
 Enemies: N/A=N/A 
 -
 Area: Flowery Field
-Description: Just outside the gates of city lies an open field filled with flowers dancing in the wind.. As you continue down the path, it leads you 
 LevelRequired: 0
+Location0
+Description: Just outside the gates of city lies an open field filled with flowers dancing in the wind.. As you continue down the path, it leads you 
+North: true=Flowery Field-Location1
+South: true=Golden Luck-Location0
+East: true=Weeping Mountains-Location0
+West: false=Flowery Field-Location2
+Weapon: N/A
+Enemies: N/A=N/A 
+Location1
+Description: You reach a dead end...|All of a sudden two people jump from thin air! Both seem to be wielding some type of spell..|They're Wizard Bandits!! What will you do 
+North: false=Nothing of interest is seen ahead...
+South: true=
+East: false=
+West: false= 
 Weapon: Angelic Dancing Sword
-Enemies:Wizard Bandit,Wizard Bandit,Wizard Bandit=1,1,1
+Enemies:Bandit,Wizard Bandit=1,1
+Location2
+Description: Save man get sword
+South: true=
+East: false=
+West: false= 
+Weapon: Angelic Dancing Sword
+Enemies:Wizard Bandit=1
 -
 Area: Weeping Mountains
-Description: blah blah
 LevelRequired: 1
-Weapon: TBD=TBD
+Description: blah blah
+Weapon: TBD
 Enemies: WizardBandit, 
 
