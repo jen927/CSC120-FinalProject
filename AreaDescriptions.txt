@@ -8,6 +8,7 @@ East: false=Only a wall as tall as the clouds meets your eye...
 West: false=Only a wall as tall as the clouds meets your eye...
 Weapon: N/A
 Enemies: N/A=N/A 
+Won: N/A
 -
 Area: Flowery Field
 LevelRequired: 0
@@ -19,21 +20,24 @@ East: true=Weeping Mountains-Location0
 West: false=Flowery Field-Location2
 Weapon: N/A
 Enemies: N/A=N/A 
+Won: N/A
 Location1
 Description: You reach a dead end...|All of a sudden two people jump from thin air! Both seem to be wielding some type of spell..|They're Wizard Bandits!! What will you do 
 North: false=Nothing of interest is seen ahead...
 South: true=
 East: false=
 West: false= 
-Weapon: Angelic Dancing Sword
-Enemies:Bandit,Wizard Bandit=1,1
+Weapon: N/A
+Enemies: Wizard Bandit,Wizard Bandit=1,1
+Won: You defeated them ease! You felt yourself grow stronger.
 Location2
-Description: Save man get sword
+Description: As you get closer, you hear a man struggling against a Wizard Bandit! What will you do?
 South: true=
 East: false=
 West: false= 
 Weapon: Angelic Dancing Sword
 Enemies:Wizard Bandit=1
+Won: The bandit ran away in fear! The man thanks you for his help! Turns out his a swordsmith! He offers you a new weapon. What will you do?
 -
 Area: Weeping Mountains
 LevelRequired: 1

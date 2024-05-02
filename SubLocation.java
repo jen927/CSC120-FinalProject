@@ -3,34 +3,28 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class SubLocation {
-    
+
     String locationName;
     String description;
-    Area currentArea;
-    boolean northPath;
-    boolean southPath;
-    boolean westPath;
-    boolean eastPath;
     String weapon;
     String areaName;
     File areaFile;
     ArrayList<String> locationInfo;
+    Hashtable<String, Integer> enemies;
 
-    public SubLocation(String areaName, String locationName){
+    public SubLocation(String areaName, String locationName) {
         this.areaFile = new File("AreaDescriptions.txt");
         this.areaName = areaName;
         this.locationName = locationName;
         this.description = "Didn't work";
-        this.northPath = false;
-        this.southPath = false;
-        this.westPath = false;
-        this.eastPath = false;
         this.weapon = "Dull Sword";
+        this.enemies = new Hashtable<String, Integer>();
     }
 
-    private void setDesc(String info){
+    private void setDesc(String info) {
         try {
 
             BufferedReader locationBuffReader = new BufferedReader(new FileReader(areaFile));
@@ -43,10 +37,11 @@ public class SubLocation {
                     while (!line.startsWith(locationName)) {
                         line = locationBuffReader.readLine();
                     }
-                    while(!line.startsWith(info)){
+                    while (!line.startsWith(info)) {
                         line = locationBuffReader.readLine();
                     }
-                    description = line; //substring the info after label
+                    StringBuilder onlyInfo = new StringBuilder(line);
+                    description = onlyInfo.substring(onlyInfo.indexOf(":") + 2); // substring the info after label
                     line = null; // ends loop after the description is read.
                 } else { // reads file until the area name is located.
                     line = locationBuffReader.readLine();
@@ -62,22 +57,63 @@ public class SubLocation {
         }
     }
 
-    public String getLocation(){
+    // gets description of area
+    public String getCurrentLocation() {
         setDesc("Description");
         return description;
     }
 
-    //  WORK IN PROGRESS    
+    public String getCurrentArea(){
+        return areaName;
+    }
+
     public String getWeapon() { // will file read the descriptions of area based on the name given
         setDesc("Weapon");
         return description;
     }
 
-    
+    public void setEnemies() {
+        setDesc("Enemies");
+        String[] typeAndLevel = description.split("=");
+        String[] type = typeAndLevel[0].split(",");
+        String[] level = typeAndLevel[1].split(",");
+        for (int i = 0; i < type.length; i++) {
+            String name = type[i];
+            int powerLevel = Integer.parseInt(level[i]);
+            Character enemy = new Character(name, powerLevel);
+            enemies.put(enemy.getName(), enemy.getPowerLevel());
+        }
+    }
+
+    public String getWonStatement(){
+        setDesc("Won:");
+        return description;
+    }
+
+    public ArrayList<String> getNextLocation(String direction) {
+        setDesc(direction);
+        String[] nextLocation = description.split("=");
+        ArrayList<String> newLocation= new ArrayList<>(2);
+        if (nextLocation[1].contains("-")) {
+            String[] locationInfo = nextLocation[1].split("-");
+            newLocation.add(locationInfo[0]);
+            newLocation.add(locationInfo[1]);
+            return newLocation;
+        } else {
+            newLocation.add(areaName);
+            newLocation.add(nextLocation[1]);
+            return newLocation;
+        }
+    }
+
+
+
+    // TESTING
     public static void main(String[] args) {
         SubLocation location0 = new SubLocation("Area: Golden Luck", "Location0");
-        System.out.println(location0.getLocation());
+        System.out.println(location0.getCurrentLocation());
         System.out.println(location0.getWeapon());
+        System.out.println(location0.getNextLocation("South"));
     }
 
 }

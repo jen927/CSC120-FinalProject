@@ -27,6 +27,7 @@ public class MainCharacter extends Character{
     public void addWeapon(Weapon weapon){
         weaponsCollection.add(weapon);
         System.out.println("You have added " + weapon + "to your Collection!");
+        System.out.println("Weapon Description: " + weapon.getDescription());
     }
     //removes weapon from collection
     public void removeWeapon(Weapon weapon){
