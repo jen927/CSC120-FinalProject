@@ -2,10 +2,10 @@ Area: Golden Luck
 LevelRequired: 0
 Location0
 Description: The heart of magic. Only the most powerful families live here. The city is booming with magic everywhere, it is a dream wonderland! That is, if you are gifted.. For the ungifted, there is only ridicule and inaccessibility… North of you lies a path to outside the city...
-North: true=Flowery Field-Location0
-South: false=Only a wall as tall as the clouds meets your eye...
-East: false=Only a wall as tall as the clouds meets your eye...
-West: false=Only a wall as tall as the clouds meets your eye...
+North: Flowery Field-Location0
+South: Only a wall as tall as the clouds meets your eye is ahead...
+East: Only a wall as tall as the clouds meets your eye is ahead...
+West: Only a wall as tall as the clouds meets your eye is ahead...
 Weapon: N/A
 Enemies: N/A=N/A 
 Won: N/A
@@ -14,34 +14,40 @@ Area: Flowery Field
 LevelRequired: 0
 Location0
 Description: Just outside the gates of city lies an open field filled with flowers dancing in the wind.. As you continue down the path, it leads you 
-North: true=Flowery Field-Location1
-South: true=Golden Luck-Location0
-East: true=Weeping Mountains-Location0
-West: false=Flowery Field-Location2
+North: Flowery Field-Location1
+South: Golden Luck-Location0
+East: Weeping Mountains-Location0
+West: Flowery Field-Location2
 Weapon: N/A
 Enemies: N/A=N/A 
 Won: N/A
 Location1
 Description: You reach a dead end...|All of a sudden two people jump from thin air! Both seem to be wielding some type of spell..|They're Wizard Bandits!! What will you do 
-North: false=Nothing of interest is seen ahead...
-South: true=
-East: false=
-West: false= 
+North: Nothing of interest is seen ahead...
+South: 
+East: 
+West: 
 Weapon: N/A
 Enemies: Wizard Bandit,Wizard Bandit=1,1
 Won: You defeated them ease! You felt yourself grow stronger.
 Location2
 Description: As you get closer, you hear a man struggling against a Wizard Bandit! What will you do?
-South: true=
-East: false=
-West: false= 
+North: 
+South: 
+East: 
+West: 
 Weapon: Angelic Dancing Sword
 Enemies:Wizard Bandit=1
 Won: The bandit ran away in fear! The man thanks you for his help! Turns out his a swordsmith! He offers you a new weapon. What will you do?
 -
 Area: Weeping Mountains
 LevelRequired: 1
+Location0
 Description: blah blah
+North: 
+South: 
+East: 
+West: 
 Weapon: TBD
 Enemies: WizardBandit, 
 

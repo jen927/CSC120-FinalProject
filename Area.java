@@ -16,14 +16,14 @@ public class Area {
     // constructor
     public Area(String name) { // will move maxEnemies variable to description
                                // file instead.
-        this.name = name;
+        this.name = "Area: " + name;
         this.areaFile = new File("AreaDescriptions.txt");
         this.requiredLevel = 0;
         this.locations = new ArrayList<SubLocation>();
         this.description = null;
     }
 
-    private String getName() { // gets name of area
+    public String getName() { // gets name of area
         return name;
     }
 
@@ -31,14 +31,11 @@ public class Area {
         try {
             BufferedReader areaBuffReader = new BufferedReader(new FileReader(areaFile));
 
-            // area name
-            String areaName = "Area: " + getName();
-
             // current line
             String line = areaBuffReader.readLine();
 
             while (line != null) { // reads whole file until empty
-                if (line.startsWith(areaName)) { // looks for the name of current area
+                if (line.startsWith(name)) { // looks for the name of current area
                     while (!line.startsWith(info)) { // Looks for Level line
                         line = areaBuffReader.readLine();
                     }
@@ -60,64 +57,23 @@ public class Area {
 
     public int getRequiredLevel() { // gets required level
         setDescripton("Level");
-        requiredLevel = Integer.parseInt(description.substring(15));
+        requiredLevel = Integer.parseInt(description);
         return requiredLevel;
     }
 
-    // stores location
-    private void setLocations() {
-        try {
-            BufferedReader areaBuffReader = new BufferedReader(new FileReader(areaFile));
-
-            // area name
-            String areaName = "Area: " + getName();
-
-            // current line
-            String line = areaBuffReader.readLine();
-
-            while (line != null) { // reads whole file until empty
-                if (line.startsWith(areaName)) { // looks for the name of current area
-                    line = areaBuffReader.readLine();
-                    while (!line.startsWith("-")) { // Looks for Level line
-                        if (line.startsWith("Location")) {
-                            locations.add(new SubLocation(areaName, line.substring(0, 9)));
-                        }
-                        line = areaBuffReader.readLine();
-                    }
-
-                } else { // reads file until the area name is located.
-                    line = areaBuffReader.readLine();
-                }
-            }
-            // closes scanners
-            areaBuffReader.close();
-
-        } catch (IOException e) { // incase of error
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-    }
-
-    // create locations of area
-    public ArrayList<SubLocation> getLocations() {
-        setLocations();
-        return locations;
-    }
-
-    // 
-    public ArrayList<String> getNextLocation(SubLocation currentLocation, String direction) {
-        return currentLocation.getNextLocation(direction);
-
-        
-    }
+    
 
     // testing
     public static void main(String[] args) {
-        Area area1 = new Area("Golden Luck");
-        area1.setLocations();
-        SubLocation loc0 = new SubLocation("Golden Luck", "Location0");
-        area1.getNextLocation(loc0, "South");
-        System.out.println(area1.locations.size());
+        Area currentArea = new Area("Golden Luck");
+
+            // Starting Location
+            SubLocation currentLocation = new SubLocation(currentArea.getName(), "Location0");
+            System.out.println(currentLocation.getCurrentLocation());
+
+            ArrayList<String> nextlocation = currentLocation.getNextLocation("North");
+            System.out.println(nextlocation);
+            currentLocation = new SubLocation(nextlocation.get(0), nextlocation.get(1));
     }
 
 }
