@@ -51,24 +51,26 @@ public class GameCompiler {
             userResponse = userInput.nextLine().toUpperCase();
             MainCharacter player = new MainCharacter(userResponse);
             System.out.println("Let you life changing journey begin " + player.getName() + "...");
+            player.addWeapon(new Weapon("Dull Sword"));
             // Starting Area
-            Area currentArea = new Area("Golden Luck");
-            //System.out.println(currentArea.getName());
+            Area currentArea = new Area("Area: Golden Luck");
             // Starting Location
             SubLocation currentLocation = new SubLocation(currentArea.getName(), "Location0");
-            //System.out.println(currentLocation.getCurrentLocation());
-
-            // Let user decide action.
-            //userResponse = userInput.nextLine().toUpperCase();
 
             // game loop
             while (stillPlaying) {
 
+                //loops same choices until new area is established.
                 boolean ifSameArea = (currentArea.getName()).equals(currentLocation.getCurrentArea());
 
                 while (ifSameArea) {
+                    //prints current area
                     System.out.println(currentArea.getName());
+
+                    //prints current location in Area
                     System.out.println(currentLocation.getCurrentLocation());
+
+                    //Player's next action
                     userResponse = userInput.nextLine().toUpperCase();
 
                     // choices
@@ -77,16 +79,18 @@ public class GameCompiler {
                             || userResponse.contains("WEST")) {
 
                         if (userResponse.contains("NORTH")) {
+                            //An arraylist with next location's info: area and location
                             ArrayList<String> nextLocation = currentLocation.getNextLocation("North");
                             if (nextLocation.get(1).contains("Location")) {
                                 currentLocation = new SubLocation(nextLocation.get(0), nextLocation.get(1));
+                                System.out.println("New Location Established");
                             } else {
                                 System.out.println(nextLocation.get(1));
                             }
                         } else if (userResponse.contains("SOUTH")) {
                             ArrayList<String> nextLocation = currentLocation.getNextLocation("South");
-                            //System.out.println("Location: "+nextLocation.get(0));
-                           // System.out.println("Location: "+nextLocation.get(1));
+                            // System.out.println("Location: "+nextLocation.get(0));
+                            // System.out.println("Location: "+nextLocation.get(1));
                             if (nextLocation.get(1).contains("Location")) {
                                 currentLocation = new SubLocation(nextLocation.get(0), nextLocation.get(1));
                             } else {
@@ -94,8 +98,8 @@ public class GameCompiler {
                             }
                         } else if (userResponse.contains("EAST")) {
                             ArrayList<String> nextLocation = currentLocation.getNextLocation("East");
-                            //System.out.println("Location: "+nextLocation.get(0));
-                            //System.out.println("Location: "+nextLocation.get(1));
+                            // System.out.println("Location: "+nextLocation.get(0));
+                            // System.out.println("Location: "+nextLocation.get(1));
                             if (nextLocation.get(1).contains("Location")) {
                                 currentLocation = new SubLocation(nextLocation.get(0), nextLocation.get(1));
                             } else {
@@ -114,16 +118,14 @@ public class GameCompiler {
                             || userResponse.contains("COLLECT")) {
                         if (currentLocation.getWeapon().equals("N/A")) {
                             System.out.println("There's nothing to grab...");
-                            //userResponse = userInput.nextLine().toUpperCase();
                         } else {
                             player.addWeapon(new Weapon(currentLocation.getWeapon()));
-                            //userResponse = userInput.nextLine().toUpperCase();
                         }
                     } else if (userResponse.contains("ATTACK") || userResponse.contains("BATTLE")) {
                         currentLocation.setEnemies();
                         if (currentLocation.enemies.isEmpty()) {
                             System.out.println("There's nothing to attack...");
-                            //userResponse = userInput.nextLine().toUpperCase();
+                            // userResponse = userInput.nextLine().toUpperCase();
                         } else {
                             if (player.getPowerLevel() < currentLocation.enemies.get("Wizard Bandit")) {
                                 System.out.println(
@@ -135,32 +137,45 @@ public class GameCompiler {
                             } else {
                                 System.out.println(player.weaponsCollection.get(-1).getAttack());
                                 System.out.println(currentLocation.getWonStatement());
-                               // userResponse = userInput.nextLine().toUpperCase();
+                                // userResponse = userInput.nextLine().toUpperCase();
                             }
                         }
+                    } else if (userResponse.contains("STATS")) {
+                        System.out.println("Name: " + player.getName());
+                        System.out.println("Level: " + player.getPowerLevel());
+                        player.listWeapons();
+                    } else if (userResponse.contains("HELP") || userResponse.contains("MENU")) {
+                        System.out.println("Available commands:");
+                        System.out.println("    North");
+                        System.out.println("    South");
+                        System.out.println("    East");
+                        System.out.println("    West");
+                        System.out.println("    Stats");
+                        System.out.println("    Attack");
+                        System.out.println("    Battle");
+                        System.out.println("    Grab");
+                        System.out.println("    Get");
+                        System.out.println("    Collect");
                     }
 
                     else {
                         System.out.println("Invalid response.");
-                        System.out.println(currentLocation.getCurrentLocation());
-                       // userResponse = userInput.nextLine().toUpperCase();
                     }
-                    //System.out.println("line 129: " + currentLocation.getCurrentArea());
-                   // System.out.println("line 130: " + currentArea.getName());
+                    // System.out.println("line 129: " + currentLocation.getCurrentArea());
+                    // System.out.println("line 130: " + currentArea.getName());
                     ifSameArea = (currentArea.getName()).equals(currentLocation.getCurrentArea());
-                    //userResponse = userInput.nextLine().toUpperCase();
-
                 }
 
                 if (new Area(currentLocation.getCurrentArea()).getRequiredLevel() < player.getPowerLevel()) {
                     System.out.println(
                             "Sorry this area is locked until you reach level " + currentArea.getRequiredLevel());
                 } else {
-                    System.out.println("line 138: " + currentLocation.getCurrentArea());
+                    System.out.println("New Area Unlocked!");
+                    // System.out.println("line 138: " + currentLocation.getCurrentArea());
                     currentArea = new Area(currentLocation.getCurrentArea());
-                    System.out.println("line 140: " + currentArea.getName());
-                    System.out.println(currentLocation.getCurrentLocation());
-                    userResponse = userInput.nextLine().toUpperCase();
+                    // System.out.println("line 140: " + currentArea.getName());
+                    // System.out.println(currentLocation.getCurrentLocation());
+
                 }
             }
 

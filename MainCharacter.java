@@ -15,8 +15,14 @@ public class MainCharacter extends Character{
     }
 
     // Updates the power level of user/player
-    public void updatePowerLevel(int newPowerLevel){
-        powerLevel = newPowerLevel;
+    private void updatePowerLevel(){
+        powerLevel = powerLevel + 2;
+    }
+
+    //List of enemies defeated.
+    public void addEnemy(Character Enemy){
+        enemiesDefeated.add(Enemy);
+        updatePowerLevel();
     }
 
     //Gets the current number of weapons in collection
@@ -26,7 +32,7 @@ public class MainCharacter extends Character{
     //Adds Weapon to collection
     public void addWeapon(Weapon weapon){
         weaponsCollection.add(weapon);
-        System.out.println("You have added " + weapon + "to your Collection!");
+        System.out.println("You have added " + weapon.getName() + " to your Collection!");
         System.out.println("Weapon Description: " + weapon.getDescription());
     }
     //removes weapon from collection
@@ -39,9 +45,7 @@ public class MainCharacter extends Character{
     public void listWeapons(){
         for(Weapon weapon : weaponsCollection){
             String name = weapon.getName();
-            //String description = weapon.getDesc();
-            System.out.println(name);
-            //System.out.println("\n" + description);
+            System.out.println(name + ": " + weapon.getDescription());
         }
     } 
 

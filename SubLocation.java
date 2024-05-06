@@ -33,23 +33,23 @@ public class SubLocation {
             String line = locationBuffReader.readLine();
 
             while (line != null) { // reads whole file until empty
-                System.out.println("line 37: "+areaName);
+                // System.out.println("line 37: "+areaName);
                 if (line.startsWith(areaName)) { // looks for the name of current area
-                    System.out.println("line 39: "+locationName);
+                    // System.out.println("line 39: "+locationName);
                     while (!line.startsWith(locationName)) {
                         line = locationBuffReader.readLine();
-                        System.out.println("line 40: " + line);
+                        // System.out.println("line 40: " + line);
                     }
-                    System.out.println("line 41: "+ line);
+                    // System.out.println("line 41: "+ line);
                     while (!line.startsWith(info)) {
                         line = locationBuffReader.readLine();
                     }
-                    System.out.println("line 45: "+ line);
+                    // System.out.println("line 45: "+ line);
                     StringBuilder onlyInfo = new StringBuilder(line);
                     description = onlyInfo.substring(onlyInfo.indexOf(":") + 2); // substring the info after label
-                    System.out.println("line 48: "+ description);
+                    // System.out.println("line 48: "+ description);
                     line = null; // ends loop after the description is read.
-                    System.out.println("line 50 " + line);
+                    // System.out.println("line 50 " + line);
                 } else { // reads file until the area name is located.
                     line = locationBuffReader.readLine();
                 }
@@ -66,18 +66,17 @@ public class SubLocation {
 
     // gets description of area
     public String getCurrentLocation() {
-        System.out.println("line 70: " + locationName);
-        if (!locationName.contains("Location")){
+        // System.out.println("line 70: " + locationName);
+        if (!locationName.contains("Location")) {
             return locationName;
-        }
-        else{
+        } else {
             setDesc("Description");
             return description;
         }
-        
+
     }
 
-    public String getCurrentArea(){
+    public String getCurrentArea() {
         return areaName;
     }
 
@@ -88,56 +87,53 @@ public class SubLocation {
 
     public void setEnemies() {
         setDesc("Enemies");
-        String[] typeAndLevel = description.split("=");
-        String[] type = typeAndLevel[0].split(",");
-        String[] level = typeAndLevel[1].split(",");
-        for (int i = 0; i < type.length; i++) {
-            String name = type[i];
-            int powerLevel = Integer.parseInt(level[i]);
-            Character enemy = new Character(name, powerLevel);
-            enemies.put(enemy.getName(), enemy.getPowerLevel());
+        if (!description.contains("N/A")) {
+            String[] typeAndLevel = description.split("=");
+            String[] type = typeAndLevel[0].split(",");
+            String[] level = typeAndLevel[1].split(",");
+            for (int i = 0; i < type.length; i++) {
+                String name = type[i];
+                int powerLevel = Integer.parseInt(level[i]);
+                Character enemy = new Character(name, powerLevel);
+                enemies.put(enemy.getName(), enemy.getPowerLevel());
+            }
         }
     }
 
-    public String getWonStatement(){
+    public String getWonStatement() {
         setDesc("Won:");
         return description;
     }
 
     public ArrayList<String> getNextLocation(String direction) {
-        //System.out.println(direction);
+        // System.out.println(direction);
         setDesc(direction);
-        ArrayList<String> newLocation= new ArrayList<>(2);
+        ArrayList<String> newLocation = new ArrayList<>(2);
         if (description.contains("-")) {
             String[] locationInfo = description.split("-");
-            newLocation.add(locationInfo[0]);
+            newLocation.add("Area: " + locationInfo[0]);
             newLocation.add(locationInfo[1]);
             return newLocation;
         } else {
             newLocation.add(areaName);
             newLocation.add(description);
-            //System.out.println("return value: "+ newLocation.get(0));
-            //System.out.println("return value: "+ newLocation.get(1));
+            // System.out.println("return value: "+ newLocation.get(0));
+            // System.out.println("return value: "+ newLocation.get(1));
             return newLocation;
-            
+
         }
     }
-
-
 
     // TESTING
     public static void main(String[] args) {
         Area currentArea = new Area("Golden Luck");
         SubLocation currentLocation = new SubLocation(currentArea.getName(), "Location0");
-        //System.out.println(currentLocation.getCurrentLocation());
-        ArrayList<String> nextlocation = currentLocation.getNextLocation( "South");
-        System.out.println("line 126: Area: "+nextlocation.get(0));
-        System.out.println("line 126: Location: "+ nextlocation.get(1));
+        // System.out.println(currentLocation.getCurrentLocation());
+        ArrayList<String> nextlocation = currentLocation.getNextLocation("South");
+        System.out.println("line 126: Area: " + nextlocation.get(0));
+        System.out.println("line 126: Location: " + nextlocation.get(1));
         currentLocation = new SubLocation(nextlocation.get(0), nextlocation.get(1));
         System.out.println(currentLocation.getCurrentLocation());
-        //System.out.println(location0.getCurrentLocation());
-        //System.out.println(location0.getWeapon());
-        //System.out.println(location0.getNextLocation("North"));
     }
 
 }
