@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.io.File; // Import the File class
 import java.io.IOException;
 import java.io.FileReader;
@@ -7,10 +6,8 @@ import java.io.BufferedReader; //Import to print specific lines in a file
 public class Area {
 
     String name;
-
     File areaFile; // file containing info on Area
     int requiredLevel;
-    ArrayList<SubLocation> locations;
     String description;
 
     // constructor
@@ -18,7 +15,6 @@ public class Area {
         this.name = name;
         this.areaFile = new File("AreaDescriptions.txt");
         this.requiredLevel = 0;
-        this.locations = new ArrayList<SubLocation>();
         this.description = null;
     }
 
@@ -70,9 +66,9 @@ public class Area {
             SubLocation currentLocation = new SubLocation("Area: "+currentArea.getName(), "Location0");
             System.out.println(currentLocation.getCurrentLocation());
 
-            ArrayList<String> nextlocation = currentLocation.getNextLocation("North");
-            System.out.println(nextlocation);
-            currentLocation = new SubLocation(nextlocation.get(0), nextlocation.get(1));
+            //ArrayList<String> nextlocation = currentLocation.getNextLocation("North");
+            //System.out.println(nextlocation);
+           // currentLocation = new SubLocation(nextlocation.get(0), nextlocation.get(1));
     }
 
 }

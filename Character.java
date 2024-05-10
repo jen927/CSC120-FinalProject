@@ -1,7 +1,6 @@
 public class Character {
 
-    String name; //make private or public
-    //String desc;
+    String name;
     int powerLevel;
 
     Character(String name, int powerLevel){

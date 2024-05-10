@@ -106,7 +106,6 @@ public class SubLocation {
     }
 
     public ArrayList<String> getNextLocation(String direction) {
-        // System.out.println(direction);
         setDesc(direction);
         ArrayList<String> newLocation = new ArrayList<>(2);
         if (description.contains("-")) {
@@ -117,8 +116,6 @@ public class SubLocation {
         } else {
             newLocation.add(areaName);
             newLocation.add(description);
-            // System.out.println("return value: "+ newLocation.get(0));
-            // System.out.println("return value: "+ newLocation.get(1));
             return newLocation;
 
         }
