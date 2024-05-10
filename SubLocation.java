@@ -19,11 +19,18 @@ public class SubLocation {
         this.areaFile = new File("AreaDescriptions.txt");
         this.areaName = areaName;
         this.locationName = locationName;
-        this.description = "Didn't work";
+        this.description = "placeholder";
         this.weapon = "Dull Sword";
         this.enemies = new Hashtable<String, Integer>();
     }
 
+    /**
+     * Sets the variable description to the specific info we are looking for in text
+     * file
+     * 
+     * @param info the subject we are locating from the text file, ex. the next
+     *             location
+     */
     private void setDesc(String info) {
         try {
 
@@ -33,23 +40,16 @@ public class SubLocation {
             String line = locationBuffReader.readLine();
 
             while (line != null) { // reads whole file until empty
-                // System.out.println("line 37: "+areaName);
                 if (line.startsWith(areaName)) { // looks for the name of current area
-                    // System.out.println("line 39: "+locationName);
                     while (!line.startsWith(locationName)) {
                         line = locationBuffReader.readLine();
-                        // System.out.println("line 40: " + line);
                     }
-                    // System.out.println("line 41: "+ line);
                     while (!line.startsWith(info)) {
                         line = locationBuffReader.readLine();
                     }
-                    // System.out.println("line 45: "+ line);
                     StringBuilder onlyInfo = new StringBuilder(line);
                     description = onlyInfo.substring(onlyInfo.indexOf(":") + 2); // substring the info after label
-                    // System.out.println("line 48: "+ description);
                     line = null; // ends loop after the description is read.
-                    // System.out.println("line 50 " + line);
                 } else { // reads file until the area name is located.
                     line = locationBuffReader.readLine();
                 }
@@ -64,9 +64,12 @@ public class SubLocation {
         }
     }
 
-    // gets description of area
+    /**
+     * Gets description of the current Location from text file
+     * 
+     * @return descripton
+     */
     public String getCurrentLocation() {
-        // System.out.println("line 70: " + locationName);
         if (!locationName.contains("Location")) {
             return locationName;
         } else {
@@ -76,17 +79,32 @@ public class SubLocation {
 
     }
 
+    /**
+     * gets the current Area of the player from text file based on location
+     * 
+     * @return the name of the area
+     */
     public String getCurrentArea() {
         return areaName;
     }
 
-    public String getWeapon() { // will file read the descriptions of area based on the name given
+    /**
+     * gets name of weapon from text file based on location
+     * 
+     * @return the name of weapon
+     */
+    public String getWeapon() {
         setDesc("Weapon");
         return description;
     }
 
+    /**
+     * sets the enemies in a hashtable, paired with their power level
+     * 
+     */
     public void setEnemies() {
         setDesc("Enemies");
+        // if there are enemies present:
         if (!description.contains("N/A")) {
             String[] typeAndLevel = description.split("=");
             String[] type = typeAndLevel[0].split(",");
@@ -100,11 +118,31 @@ public class SubLocation {
         }
     }
 
+    /**
+     * gets the number of enemies in location
+     * 
+     * @return the number of enemies
+     */
+    public int getNumEnemies() {
+        return enemies.size();
+    }
+
+    /**
+     * gets winning statement from file if player defeats enemy
+     * 
+     * @return statement
+     */
     public String getWonStatement() {
         setDesc("Won:");
         return description;
     }
 
+    /**
+     * gets the area and location description of the next location in a arraylist
+     * 
+     * @param direction choice of direction ex. north, south, etc.
+     * @return the arraylist with the area name and location description
+     */
     public ArrayList<String> getNextLocation(String direction) {
         setDesc(direction);
         ArrayList<String> newLocation = new ArrayList<>(2);

@@ -22,7 +22,7 @@ Weapon: N/A
 Enemies: N/A=N/A 
 Won: N/A
 Location1
-Description: You reach a dead end...|All of a sudden two people jump from thin air! Both seem to be wielding some type of spell..|They're Wizard Bandits!! What will you do 
+Description: You reach a dead end... All of a sudden two people jump from thin air! Both seem to be wielding some type of spell.. They're Wizard Bandits!!
 North: Nothing of interest is seen ahead...
 South: Flowery Field-Location0
 East: Smooth, tall mountains only lie ahead of you…
@@ -52,13 +52,13 @@ Weapon: N/A
 Enemies: N/A
 Won: N/A
 Location1
-Description: Behind all the mist lies a cave entrance!|However, 3 Wizard Bandits are guarding the entrance!! 
+Description: Behind all the mist lies a cave entrance! However, 2 Wizard Bandits are guarding the entrance!! 
 North: Weeping Mountains-Location0
 South: Dead end.
 East: Weeping Mountains-Location2
 West: Dead end.
-Weapon: TBD
-Enemies: Wizard Bandit,Wizard Bandit=12,12
+Weapon: N/A
+Enemies: Wizard Bandit,Wizard Bandit=10,10
 Won: The path has cleared! However, beware as they like to return to these locations. Inside the cave, to the east is a long, dark tunnel.
 Location2
 Description: After walking through this cave, you reach a place where it seems to have been a previous settlement. Ahead, you see daylight shine in.
@@ -66,9 +66,9 @@ North: Dead end. Only more items from the settlement can be seen, such as tents.
 South: Honorable City-Location2
 East: Dead end.
 West: Weeping Mountains-Location1
-Weapon: TBD
-Enemies: Wizard Bandit,Wizard Bandit=12,12
-Won: The path has cleared! However, beware as they like to return to these locations.
+Weapon: N/A
+Enemies: N/A
+Won: N/A
 Location3
 Description: More mountain terrain, but some of these look climbale…
 North: Weeping Mountains-Location4
@@ -85,7 +85,7 @@ South: Weeping Mountains-Location3
 East: Weeping Mountains-Location5
 West: Only a cliff is seen ahead.
 Weapon: N/A
-Enemies: Wizard Bandit,Wizard Bandit=12,12
+Enemies: Wizard Bandit,Wizard Bandit=10,10
 Won: They didn’t stand a chance against you. You see them disappear down the mountains with glee.
 Location5
 Description: You find a very old encampment wandering around the area. There are tents of old, worn out fabrics scattered around. You even find an old notebook, but what caught your attention was the abandoned, beautiful sword in front of you.
@@ -103,7 +103,7 @@ South: A huge waterfall is only seen ahead.
 East: Fierce Soul-Location0
 West: Only the edge of a cliff is seen.
 Weapon: N/A
-Enemies: Wizard Bandit=22
+Enemies: Wizard Bandit=20
 Won: If it weren’t for your previous experience, you might have not survived this difficult battle… As you follow the path east, you see a nearby city.
 -
 Area: Fierce Soul
@@ -154,7 +154,7 @@ South: There’s no escaping the arena without fighting. All around you are crow
 East: There’s no escaping the arena without fighting. All around you are crowds of people chanting and cheering for a good fight.
 West: There’s no escaping the arena without fighting. All around you are crowds of people chanting and cheering for a good fight.
 Weapon: N/A
-Enemies: Opponent,Opponent,Opponent,Opponent,Opponent,Opponent,Opponent,Opponent=18,16,20,18,18,16,20,22
+Enemies: Opponent,Opponent,Opponent,Opponent,Opponent,Opponent,Opponent,Opponent=30,30,30,30,30,30,30,30
 Won: …After the toughest battle of your life, you emerge victorious! The crowd goes wild!!!! They are chanting your name! You were labeled as the first magicless person to ever win!
 Location2
 Description: The path ended up leading you to Honorable City! If you are ready to prove your worthiness, head south to the arena and prove it!

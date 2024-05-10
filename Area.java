@@ -11,17 +11,27 @@ public class Area {
     String description;
 
     // constructor
-    public Area(String name) { 
+    public Area(String name) {
         this.name = name;
         this.areaFile = new File("AreaDescriptions.txt");
         this.requiredLevel = 0;
         this.description = null;
     }
 
+    /**
+     * gets name of area
+     * 
+     * @return name of area
+     */
     public String getName() { // gets name of area
         return name;
     }
 
+    /**
+     * Sets the variable description to the specific info we are looking for
+     * 
+     * @param info the subject we are locating from the text file, ex. Level of Area
+     */
     private void setDescripton(String info) {
         try {
             BufferedReader areaBuffReader = new BufferedReader(new FileReader(areaFile));
@@ -50,25 +60,28 @@ public class Area {
         }
     }
 
+    /**
+     * Gets the requiredLevel for an Area
+     * 
+     * @return int of requiredLevel to enter the Area
+     */
     public int getRequiredLevel() { // gets required level
         setDescripton("Level");
         requiredLevel = Integer.parseInt(description);
         return requiredLevel;
     }
 
-    
-
     // testing
     public static void main(String[] args) {
         Area currentArea = new Area("Golden Luck");
 
-            // Starting Location
-            SubLocation currentLocation = new SubLocation("Area: "+currentArea.getName(), "Location0");
-            System.out.println(currentLocation.getCurrentLocation());
+        // Starting Location
+        SubLocation currentLocation = new SubLocation("Area: " + currentArea.getName(), "Location0");
+        System.out.println(currentLocation.getCurrentLocation());
 
-            //ArrayList<String> nextlocation = currentLocation.getNextLocation("North");
-            //System.out.println(nextlocation);
-           // currentLocation = new SubLocation(nextlocation.get(0), nextlocation.get(1));
+        // ArrayList<String> nextlocation = currentLocation.getNextLocation("North");
+        // System.out.println(nextlocation);
+        // currentLocation = new SubLocation(nextlocation.get(0), nextlocation.get(1));
     }
 
 }

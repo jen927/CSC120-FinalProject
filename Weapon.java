@@ -3,25 +3,34 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Weapon { //WORK IN PROGRESS
+public class Weapon {
 
     String name;
-    int powerLevel;
     String description;
     File weaponFile;
 
-    public Weapon(String name){ 
+    public Weapon(String name) {
         this.weaponFile = new File("Weapons.txt");
         this.name = name;
-        this.powerLevel = 0;
         this.description = "";
     }
 
-    public String getName(){
+    /**
+     * gets name of weapon
+     * 
+     * @return the name of weapon
+     */
+    public String getName() {
         return name;
     }
 
-    private void getDesc(String info){ 
+    /**
+     * gets info about weapon from weapons.txt
+     * 
+     * @param info the subject, ex. description
+     * @return the info provided of the subject
+     */
+    private void getDesc(String info) {
         try {
             BufferedReader weaponBuffReader = new BufferedReader(new FileReader(weaponFile));
 
@@ -52,25 +61,29 @@ public class Weapon { //WORK IN PROGRESS
         }
     }
 
-    public String getAttack(){
+    /**
+     * gets attack move from text file
+     * 
+     * @return description of attack move
+     */
+    public String getAttack() {
         getDesc("Attack:");
         return description;
     }
 
-    public int getPowerLevel(){
-        getDesc("Level:");
-        return Integer.parseInt(description);
-    }
-
-    public String getDescription(){
+    /**
+     * gets description of weapon
+     * 
+     * @return description of weapon
+     */
+    public String getDescription() {
         getDesc("Description:");
         return description;
     }
 
-    //testing
+    // testing
     public static void main(String[] args) {
         Weapon wep1 = new Weapon("Dull Sword");
-        System.out.println(wep1.getPowerLevel());
         System.out.println(wep1.getDescription());
     }
 }

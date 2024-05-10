@@ -62,6 +62,11 @@ public class GameCompiler {
             // game loop
             while (stillPlaying) {
 
+                if(player.getEnemiesDefeated()==(16)){
+                    System.out.println("Congrautaions you've won the game!!");
+                    stillPlaying = false;
+                }
+
                 // loops same choices until new area is established.
                 boolean ifSameArea = (currentArea.getName()).equals(currentLocation.getCurrentArea());
 
@@ -117,21 +122,22 @@ public class GameCompiler {
                                 System.out.println(nextLocation.get(1));
                             }
                         }
-                        //battle keywords
+                        // battle keywords
                     } else if (userResponse.contains("GRAB")
                             || userResponse.contains("COLLECT")) {
-                        //if no weapon in location        
+                        // if no weapon in location
                         if (currentLocation.getWeapon().equals("N/A")) {
                             System.out.println("There's nothing to grab...");
-                        } else if(currentLocation.getWeapon().equals("Swift Lock Sword")){
-                            //adds a special weapon to collection
+                        } else if (currentLocation.getWeapon().equals("Swift Lock Sword")) {
+                            // adds a special weapon to collection
                             player.weaponsCollection.clear();
                             player.addWeapon(new Weapon("Swift Lock Sword"));
                         } else {
-                            //adds weapon to collection
+                            // adds weapon to collection
                             player.addWeapon(new Weapon(currentLocation.getWeapon()));
                         }
-                    } else if (userResponse.contains("ATTACK") || userResponse.contains("BATTLE") || userResponse.contains("FIGHT")) {
+                    } else if (userResponse.contains("ATTACK") || userResponse.contains("BATTLE")
+                            || userResponse.contains("FIGHT")) {
                         currentLocation.setEnemies();
                         if (currentLocation.enemies.isEmpty()) {
                             System.out.println("There's nothing to attack...");
@@ -143,17 +149,21 @@ public class GameCompiler {
                                 stillPlaying = false;
                                 ifSameArea = false;
                             } else {
+                                // uses attack move from weapon most recently added.
                                 System.out.println(
                                         player.weaponsCollection.get(player.weaponsCollection.size() - 1).getAttack());
                                 System.out.println(currentLocation.getWonStatement());
+                                // adds to the total of enemies defeated AND updates player's level by 2 for
+                                // every enemy defeated.
+                                player.updateEnemiesDefeated(currentLocation.getNumEnemies());
                             }
                         }
-                      //gets player stats  
+                        // gets player stats
                     } else if (userResponse.contains("STATS")) {
                         System.out.println("Name: " + player.getName());
                         System.out.println("Level: " + player.getPowerLevel());
                         player.listWeapons();
-                      //lists keywords/commands  
+                        // lists keywords/commands
                     } else if (userResponse.contains("HELP") || userResponse.contains("MENU")) {
                         System.out.println("Available commands:");
                         System.out.println("    North");
@@ -171,10 +181,10 @@ public class GameCompiler {
                     else {
                         System.out.println("Invalid response.");
                     }
-                    //determines if player enters a new area
+                    // determines if player enters a new area
                     ifSameArea = (currentArea.getName()).equals(currentLocation.getCurrentArea());
                 }
-                //determines whether player enters new area based on level
+                // determines whether player enters new area based on level
                 int level = new Area(currentLocation.getCurrentArea()).getRequiredLevel();
                 if (level > player.getPowerLevel()) {
                     System.out.println(
@@ -185,6 +195,7 @@ public class GameCompiler {
                     currentArea = new Area(currentLocation.getCurrentArea());
 
                 }
+
 
             }
 
