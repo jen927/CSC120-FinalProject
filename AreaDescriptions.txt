@@ -13,7 +13,7 @@ Won: N/A
 Area: Flowery Field
 LevelRequired: 0
 Location0
-Description: Just outside the gates of city lies an open field filled with flowers dancing in the wind.. As you continue down the path, it leads you 
+Description: Just outside the gates of the city lies an open field filled with flowers dancing in the wind.. The path continues North, however, to the east, you can hear the rushing and crashing of water. To the west, it is awfully quiet…
 North: Flowery Field-Location1
 South: Golden Luck-Location0
 East: Weeping Mountains-Location0
@@ -24,30 +24,144 @@ Won: N/A
 Location1
 Description: You reach a dead end...|All of a sudden two people jump from thin air! Both seem to be wielding some type of spell..|They're Wizard Bandits!! What will you do 
 North: Nothing of interest is seen ahead...
-South: 
-East: 
-West: 
+South: Flowery Field-Location0
+East: Smooth, tall mountains only lie ahead of you…
+West: An endless body of water is only seen.
 Weapon: N/A
-Enemies: Wizard Bandit,Wizard Bandit=1,1
-Won: You defeated them ease! You felt yourself grow stronger.
+Enemies: Wizard Bandit,Wizard Bandit=2,2
+Won: You defeated them with ease! You felt yourself grow stronger.
 Location2
 Description: As you get closer, you hear a man struggling against a Wizard Bandit! What will you do?
-North: 
-South: 
-East: 
-West: 
+North: An endless body of water can only be seen…
+South: An endless body of water can only be seen…
+East: Flowery Field-Location0
+West: An endless body of water can only be seen…
 Weapon: Angelic Dancing Sword
-Enemies:Wizard Bandit=1
-Won: The bandit ran away in fear! The man thanks you for his help! Turns out his a swordsmith! He offers you a new weapon. What will you do?
+Enemies: Wizard Bandit=6
+Won: The bandit ran away in fear! The man thanks you for his help! Turns out he's a swordsmith! He offers you a new weapon. What will you do?
 -
 Area: Weeping Mountains
-LevelRequired: 1
+LevelRequired: 8
 Location0
-Description: blah blah
-North: 
-South: 
-East: 
-West: 
+Description: There are waterfalls all around you. The sounds of the water rushing down creates a roar, one people have associated with the cries of the mountains. It’s a bit difficult to see up ahead anywhere due to the high concentration of mist…
+North: There’s only a smooth, thick side of one of the many mountains present.
+South: Weeping Mountains-Location1
+East: Weeping Mountains-Location3
+West: Flowery Field-Location0
+Weapon: N/A
+Enemies: N/A
+Won: N/A
+Location1
+Description: Behind all the mist lies a cave entrance!|However, 3 Wizard Bandits are guarding the entrance!! 
+North: Weeping Mountains-Location0
+South: Dead end.
+East: Weeping Mountains-Location2
+West: Dead end.
 Weapon: TBD
-Enemies: WizardBandit, 
-
+Enemies: Wizard Bandit,Wizard Bandit=12,12
+Won: The path has cleared! However, beware as they like to return to these locations. Inside the cave, to the east is a long, dark tunnel.
+Location2
+Description: After walking through this cave, you reach a place where it seems to have been a previous settlement. Ahead, you see daylight shine in.
+North: Dead end. Only more items from the settlement can be seen, such as tents.
+South: Honorable City-Location2
+East: Dead end.
+West: Weeping Mountains-Location1
+Weapon: TBD
+Enemies: Wizard Bandit,Wizard Bandit=12,12
+Won: The path has cleared! However, beware as they like to return to these locations.
+Location3
+Description: More mountain terrain, but some of these look climbale…
+North: Weeping Mountains-Location4
+South: Tall, smooth mountains are only seen. 
+East: Tall, smooth mountains are only seen.
+West: Weeping Mountains-Location0
+Weapon: N/A
+Enemies: N/A
+Won: N/A
+Location4
+Description: Finally at the top of the mountain, you are in awe of the beautiful scenery, until 2 Wizard Bandits jump you!!!
+North: Only a cliff is seen ahead.
+South: Weeping Mountains-Location3
+East: Weeping Mountains-Location5
+West: Only a cliff is seen ahead.
+Weapon: N/A
+Enemies: Wizard Bandit,Wizard Bandit=12,12
+Won: They didn’t stand a chance against you. You see them disappear down the mountains with glee.
+Location5
+Description: You find a very old encampment wandering around the area. There are tents of old, worn out fabrics scattered around. You even find an old notebook, but what caught your attention was the abandoned, beautiful sword in front of you.
+North: Only a cliff is seen ahead.
+South: Weeping Mountains-Location6
+East: The view from the cliff shows a vibrant and big town. However, there isn’t a clear way down yet.
+West: Weeping Mountains-Location4
+Weapon: Blue Gem Sword
+Enemies: N/A
+Won: N/A
+Location6
+Description: As you venture in the lower levels of the mountains, you spot a Wizard Bandit! However, this one seems in leagues different from all the previous ones…
+North: Weeping Mountains-Location5
+South: A huge waterfall is only seen ahead.
+East: Fierce Soul-Location0
+West: Only the edge of a cliff is seen.
+Weapon: N/A
+Enemies: Wizard Bandit=22
+Won: If it weren’t for your previous experience, you might have not survived this difficult battle… As you follow the path east, you see a nearby city.
+-
+Area: Fierce Soul
+LevelRequired: 22
+Location0
+Description: You’ve entered the city of Fierce Soul. You’ve heard of this city back home. It’s known for its strong support for the yearly magic games in Honorable City. Many travel to this city to not only see the games, but as a stopping point before going to Honorable City. Around you are shops everywhere.
+North: City walls are only seen ahead.
+South: Fierce Soul-Location2
+East: Fierce Soul-Location1
+West: Weeping Mountains-Location6
+Weapon: N/A
+Enemies: N/A
+Won: N/A
+Location1
+Description: You’ve entered a small weapon shop. The owner immediately recognizes the swords in your possession. You both chat about your impressive collection and she offers you a one of a kind sword, one only high officials wield, Swift Lock Sword, in exchange for your whole collection… Is it worth it?
+North: Nothing of interest is seen..
+South: Nothing of interest is seen…
+East: Nothing of interest is seen…
+West: Fierce Soul-Location0
+Weapon: Swift Lock Sword
+Enemies: N/A
+Won: N/A
+Location2
+Description: You’ve entered the city’s port station. You are just in time for the boarding of a ship heading to Honorable City to the West of you.
+North: Fierce City-Location0
+South: An endless body of water is only seen ahead.
+East: Only other ports are seen ahead, but nothing of interest.
+West: Honorable City-Location0
+Weapon: N/A
+Enemies: N/A
+Won: N/A
+-
+Area: Honorable City
+LevelRequired: 20
+Location0
+Description: You’ve entered the city’s port station. People are moving in and out of the city constantly. There are a lot of pop up stands around. People are excited for the games. West lies the famous arena.
+North: Crowded areas are only seen ahead.
+South: An endless body of water is only seen ahead.
+East: Fierce Soul-Location2
+West: Honorable City-Location1
+Weapon: N/A
+Enemies: N/A
+Won: N/A
+Location1
+Description: You entered the arena. You’ve trained for this day. You will prove your worthiness as a magic wielder! 8 opponents, all very famously known for their high skill of magic manipulation, stand in front of you. What will you do?
+North: There’s no escaping the arena without fighting. All around you are crowds of people chanting and cheering for a good fight.
+South: There’s no escaping the arena without fighting. All around you are crowds of people chanting and cheering for a good fight.
+East: There’s no escaping the arena without fighting. All around you are crowds of people chanting and cheering for a good fight.
+West: There’s no escaping the arena without fighting. All around you are crowds of people chanting and cheering for a good fight.
+Weapon: N/A
+Enemies: Opponent,Opponent,Opponent,Opponent,Opponent,Opponent,Opponent,Opponent=18,16,20,18,18,16,20,22
+Won: …After the toughest battle of your life, you emerge victorious! The crowd goes wild!!!! They are chanting your name! You were labeled as the first magicless person to ever win!
+Location2
+Description: The path ended up leading you to Honorable City! If you are ready to prove your worthiness, head south to the arena and prove it!
+North: Weeping Mountains-Location2
+South: Honorable City-Location1
+East: Only crowded areas can be seen ahead…
+West: Only crowded areas can be seen ahead…
+Weapon: N/A
+Enemies: N/A
+Won: N/A

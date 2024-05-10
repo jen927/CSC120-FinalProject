@@ -1,16 +1,17 @@
 Name: Dull Sword
 Description: Cheapest magical weapon on the market.. Good for beginners, however, very lackluster in terms of magical output...
-Attack: TBD
-Level: 0
+Attack: Magic Slash Attack! In one swing, you managed to strike down the enemy!!
 -
 Name: Angelic Dancing Sword
 Description: Those who wield this weapon are said to be stepping on stage. They move in tune to the rhythm of battle. If you listen close enough, you might hear it...
-Attack: TBD
-Level: 1
+Attack: Just as your body and mind become one with the sword: Secret Art: Dancing Flower. Almost as if you were dancing, you evaded all their attacks and with one swing, blew them away!
 -
-Name: TBD
-Description: blah blah
-Attack: TBD
-Level: 2
+Name: Blue Gem Sword
+Description: Most people have only seen this type of sword in history books. Although not much is known of them, a group that existed years agos were known to wield magical swords so powerful that a small blast resembled a beautiful, blue gem.
+Attack: The unsheilding of your sword was powerful enough to create the historical blue burst. That alone was enough to deal with the enemy.
+-
+Name: Swift Lock Sword
+Description: A very rare and powerful modern day weapon. Only high officals are seen wielding this weapon. It requires an intense control of one's output, one wrong move can wipe a village. 
+Attack: You take a deep breath as you hold the hilt of the sword. This is your moment.|"Secert Art: Lighting Strike"|Without missing a beat, you create a slash so powerful and quick, it would be hard to miss...
 -
 

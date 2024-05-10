@@ -14,8 +14,7 @@ public class Area {
     String description;
 
     // constructor
-    public Area(String name) { // will move maxEnemies variable to description
-                               // file instead.
+    public Area(String name) { 
         this.name = name;
         this.areaFile = new File("AreaDescriptions.txt");
         this.requiredLevel = 0;
@@ -35,15 +34,12 @@ public class Area {
             String line = areaBuffReader.readLine();
 
             while (line != null) { // reads whole file until empty
-                //System.out.println("line 39: "+ name);
                 if (line.startsWith(name)) { // looks for the name of current area
                     while (!line.startsWith(info)) { // Looks for Level line
                         line = areaBuffReader.readLine();
-                        //System.out.println("line 41: " + line);
                     }
                     StringBuilder onlyInfo = new StringBuilder(line);
                     description = onlyInfo.substring(onlyInfo.indexOf(":") + 2); // substring the info after label
-                    //System.out.println(description);
                     line = null; // ends loop
                 } else { // reads file until the area name is located.
                     line = areaBuffReader.readLine();

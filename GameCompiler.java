@@ -56,21 +56,23 @@ public class GameCompiler {
             Area currentArea = new Area("Area: Golden Luck");
             // Starting Location
             SubLocation currentLocation = new SubLocation(currentArea.getName(), "Location0");
-
+            // Arraylist of traveled locations
+            ArrayList<SubLocation> locationsTraveled = new ArrayList<SubLocation>();
+            locationsTraveled.add(currentLocation);
             // game loop
             while (stillPlaying) {
 
-                //loops same choices until new area is established.
+                // loops same choices until new area is established.
                 boolean ifSameArea = (currentArea.getName()).equals(currentLocation.getCurrentArea());
 
                 while (ifSameArea) {
-                    //prints current area
+                    // prints current area
                     System.out.println(currentArea.getName());
 
-                    //prints current location in Area
+                    // prints current location in Area
                     System.out.println(currentLocation.getCurrentLocation());
 
-                    //Player's next action
+                    // Player's next action
                     userResponse = userInput.nextLine().toUpperCase();
 
                     // choices
@@ -79,71 +81,79 @@ public class GameCompiler {
                             || userResponse.contains("WEST")) {
 
                         if (userResponse.contains("NORTH")) {
-                            //An arraylist with next location's info: area and location
+                            // An arraylist with next location's info: area and location
                             ArrayList<String> nextLocation = currentLocation.getNextLocation("North");
                             if (nextLocation.get(1).contains("Location")) {
                                 currentLocation = new SubLocation(nextLocation.get(0), nextLocation.get(1));
-                                System.out.println("New Location Established");
+                                locationsTraveled.add(currentLocation);
                             } else {
                                 System.out.println(nextLocation.get(1));
                             }
                         } else if (userResponse.contains("SOUTH")) {
+                            // An arraylist with next location's info: area and location
                             ArrayList<String> nextLocation = currentLocation.getNextLocation("South");
-                            // System.out.println("Location: "+nextLocation.get(0));
-                            // System.out.println("Location: "+nextLocation.get(1));
                             if (nextLocation.get(1).contains("Location")) {
                                 currentLocation = new SubLocation(nextLocation.get(0), nextLocation.get(1));
+                                locationsTraveled.add(currentLocation);
                             } else {
                                 System.out.println(nextLocation.get(1));
                             }
                         } else if (userResponse.contains("EAST")) {
+                            // An arraylist with next location's info: area and location
                             ArrayList<String> nextLocation = currentLocation.getNextLocation("East");
-                            // System.out.println("Location: "+nextLocation.get(0));
-                            // System.out.println("Location: "+nextLocation.get(1));
                             if (nextLocation.get(1).contains("Location")) {
                                 currentLocation = new SubLocation(nextLocation.get(0), nextLocation.get(1));
+                                locationsTraveled.add(currentLocation);
                             } else {
                                 System.out.println(nextLocation.get(1));
                             }
                         } else if (userResponse.contains("WEST")) {
+                            // An arraylist with next location's info: area and location
                             ArrayList<String> nextLocation = currentLocation.getNextLocation("West");
                             if (nextLocation.get(1).contains("Location")) {
                                 currentLocation = new SubLocation(nextLocation.get(0), nextLocation.get(1));
+                                locationsTraveled.add(currentLocation);
                             } else {
                                 System.out.println(nextLocation.get(1));
                             }
                         }
-
-                    } else if (userResponse.contains("GRAB") || userResponse.contains("GET")
+                        //battle keywords
+                    } else if (userResponse.contains("GRAB")
                             || userResponse.contains("COLLECT")) {
+                        //if no weapon in location        
                         if (currentLocation.getWeapon().equals("N/A")) {
                             System.out.println("There's nothing to grab...");
+                        } else if(currentLocation.getWeapon().equals("Swift Lock Sword")){
+                            //adds a special weapon to collection
+                            player.weaponsCollection.clear();
+                            player.addWeapon(new Weapon("Swift Lock Sword"));
                         } else {
+                            //adds weapon to collection
                             player.addWeapon(new Weapon(currentLocation.getWeapon()));
                         }
-                    } else if (userResponse.contains("ATTACK") || userResponse.contains("BATTLE")) {
+                    } else if (userResponse.contains("ATTACK") || userResponse.contains("BATTLE") || userResponse.contains("FIGHT")) {
                         currentLocation.setEnemies();
                         if (currentLocation.enemies.isEmpty()) {
                             System.out.println("There's nothing to attack...");
-                            // userResponse = userInput.nextLine().toUpperCase();
                         } else {
-                            if (player.getPowerLevel() < currentLocation.enemies.get("Wizard Bandit")) {
+                            if (player.getPowerLevel() < currentLocation.enemies.get("Wizard Bandit")
+                                    || player.getPowerLevel() < currentLocation.enemies.get("Opponent")) {
                                 System.out.println(
-                                        "Oh, no you weren't strong enough! You tried with all you might but these wizard bandits are level "
-                                                + currentLocation.enemies.get("Wizard Bandit") + " and you are level "
-                                                + player.getPowerLevel());
+                                        "Oh, no you weren't strong enough! You tried with all you might but these wizards... Better luck next time!");
                                 stillPlaying = false;
                                 ifSameArea = false;
                             } else {
-                                System.out.println(player.weaponsCollection.get(-1).getAttack());
+                                System.out.println(
+                                        player.weaponsCollection.get(player.weaponsCollection.size() - 1).getAttack());
                                 System.out.println(currentLocation.getWonStatement());
-                                // userResponse = userInput.nextLine().toUpperCase();
                             }
                         }
+                      //gets player stats  
                     } else if (userResponse.contains("STATS")) {
                         System.out.println("Name: " + player.getName());
                         System.out.println("Level: " + player.getPowerLevel());
                         player.listWeapons();
+                      //lists keywords/commands  
                     } else if (userResponse.contains("HELP") || userResponse.contains("MENU")) {
                         System.out.println("Available commands:");
                         System.out.println("    North");
@@ -153,30 +163,29 @@ public class GameCompiler {
                         System.out.println("    Stats");
                         System.out.println("    Attack");
                         System.out.println("    Battle");
+                        System.out.println("    Fight");
                         System.out.println("    Grab");
-                        System.out.println("    Get");
                         System.out.println("    Collect");
                     }
 
                     else {
                         System.out.println("Invalid response.");
                     }
-                    // System.out.println("line 129: " + currentLocation.getCurrentArea());
-                    // System.out.println("line 130: " + currentArea.getName());
+                    //determines if player enters a new area
                     ifSameArea = (currentArea.getName()).equals(currentLocation.getCurrentArea());
                 }
-
-                if (new Area(currentLocation.getCurrentArea()).getRequiredLevel() < player.getPowerLevel()) {
+                //determines whether player enters new area based on level
+                int level = new Area(currentLocation.getCurrentArea()).getRequiredLevel();
+                if (level > player.getPowerLevel()) {
                     System.out.println(
-                            "Sorry this area is locked until you reach level " + currentArea.getRequiredLevel());
+                            "Sorry this area is locked until you reach level " + level);
+                    currentLocation = locationsTraveled.get(locationsTraveled.size() - 2);
                 } else {
                     System.out.println("New Area Unlocked!");
-                    // System.out.println("line 138: " + currentLocation.getCurrentArea());
                     currentArea = new Area(currentLocation.getCurrentArea());
-                    // System.out.println("line 140: " + currentArea.getName());
-                    // System.out.println(currentLocation.getCurrentLocation());
 
                 }
+
             }
 
             // closes scanner

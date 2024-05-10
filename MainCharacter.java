@@ -32,6 +32,7 @@ public class MainCharacter extends Character{
     //Adds Weapon to collection
     public void addWeapon(Weapon weapon){
         weaponsCollection.add(weapon);
+        updatePowerLevel();
         System.out.println("You have added " + weapon.getName() + " to your Collection!");
         System.out.println("Weapon Description: " + weapon.getDescription());
     }
@@ -39,6 +40,7 @@ public class MainCharacter extends Character{
     public void removeWeapon(Weapon weapon){
         weaponsCollection.remove(weapon);
         System.out.println("You have lost " + weapon + "from your Collection...");
+        powerLevel = powerLevel - 2;
     }
 
     //List weapon inventory
